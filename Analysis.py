@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import math
 import numpy as np
+import statsmodels.api as sm 
 
 
 con = lite.connect('UN_data.db')
@@ -35,16 +36,24 @@ for row, country in enumerate(result['country']):
 
 	# if value not NaN, then add values to list
 	if math.isnan(GDP) == False:
-		x.append(GDP)
+		y.append(GDP)
 		female_age = result['female'].iloc[row]
-		y.append(female_age) 
+		x.append(female_age) 
 
-# log tranform GDP values
-x = map(lambda x: math.log(x), x)
+# log tranform GDP value
+y = map(lambda x: math.log(x), y)
+
 
 # plot scatter plot to view correlation
 plt.scatter(x,y)
 plt.show()
+
+X = sm.add_constant(x)
+model = sm.OLS(y,X)
+f = model.fit()
+print f.summary()
+
+
 
 # There is a medium strength correlation between the values. This shows there is a relationship between female educational life expectancy and GDP, although not necessarilly causation.
 
