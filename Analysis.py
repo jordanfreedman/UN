@@ -1,3 +1,5 @@
+# Conduct linear regression on UN data on average country education lengths and country GDP
+
 import sqlite3 as lite
 import pandas as pd 
 import matplotlib.pyplot as plt

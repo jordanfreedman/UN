@@ -1,3 +1,5 @@
+# To scrape data from UN website and input into SQL database
+
 from bs4 import BeautifulSoup
 import requests
 import sqlite3 as lite

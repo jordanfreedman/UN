@@ -1,3 +1,5 @@
+# To read data from UN database and input into SQL database 
+
 import csv
 import sqlite3 as lite
 import pandas as pd
